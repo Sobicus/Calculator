@@ -30,10 +30,11 @@ document.querySelector('.buttons').onclick = (event) => {
     const key = event.target.textContent;
     //if press [0-9]
     if (digit.includes(key)) {
-        if (a == '' && sign == '') {
+        if (b === '' && sign === '') {
             a += key;
             out.textContent = a;
             console.log(a, b, sign)
+        } else if (a !== '' && b !== '' && finish) {
         } else {
             b += key
             out.textContent = b
