@@ -35,17 +35,55 @@ document.querySelector('.buttons').onclick = (event) => {
             out.textContent = a;
             console.log(a, b, sign)
         } else if (a !== '' && b !== '' && finish) {
+            b = key;
+            finish = false;
+            out.textContent = b;
         } else {
             b += key
             out.textContent = b
             console.log(a, b, sign)
         }
     }
-    //if press ['-', '+', 'X', '/', '%', '+/-']
+    //if press ['-', '+', 'X', '/', '%']
     if (action.includes(key)) {
         sign = key
         out.textContent = sign;
         console.log(a, b, sign)
+    }
+    /*if (action.includes('+/-') && a!== '') {
+        a = -a
+    } else if(action.includes('+/-') && b!== '') {
+        b = -b
+    }*/
+
+    //press =
+    if (key === '=') {
+        if (b === '') b = a;
+        switch (sign) {
+            case "+":
+                a = (+a) + (+b);
+                break;
+            case "-":
+                a = a - b;
+                break;
+            case "*":
+                a = a * b;
+                break;
+            case "/":
+                if(b==='0'){
+                    out.textContent = '0';
+                    a =0;
+                    b=0;
+                    return;
+                }
+                a = a / b;
+                break;
+            case "%":
+                a = (a / 100) * b;
+                break;
+        }
+        finish = true;
+        out.textContent = a;
     }
 }
 //
