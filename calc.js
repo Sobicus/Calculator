@@ -50,11 +50,12 @@ document.querySelector('.buttons').onclick = (event) => {
         out.textContent = sign;
         console.log(a, b, sign)
     }
-    /*if (action.includes('+/-') && a!== '') {
-        a = -a
-    } else if(action.includes('+/-') && b!== '') {
-        b = -b
-    }*/
+
+    // if (action.includes('+/-') && a!== '') {
+    //     a = -a
+    // } else if(action.includes('+/-') && b!== '') {
+    //     b = -b
+    // }
 
     //press =
     if (key === '=') {
@@ -66,7 +67,7 @@ document.querySelector('.buttons').onclick = (event) => {
             case "-":
                 a = a - b;
                 break;
-            case "*":
+            case "X":
                 a = a * b;
                 break;
             case "/":
@@ -81,12 +82,14 @@ document.querySelector('.buttons').onclick = (event) => {
             case "%":
                 a = (a / 100) * b;
                 break;
+            case "+/-":
+                if (a!== '') {
+                    a = -a
+                } else {
+                    b = -b
+                }
         }
         finish = true;
         out.textContent = a;
     }
 }
-//
-//
-//
-//
